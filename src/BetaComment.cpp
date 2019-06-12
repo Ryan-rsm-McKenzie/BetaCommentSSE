@@ -22,9 +22,6 @@ BetaComment* BetaComment::GetSingleton()
 
 bool BetaComment::Exec(const RE::SCRIPT_PARAMETER* a_paramInfo, RE::CommandInfo::ScriptData* a_scriptData, RE::TESObjectREFR* a_thisObj, RE::TESObjectREFR* a_containingObj, RE::Script* a_scriptObj, RE::ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr)
 {
-	auto mm = RE::MenuManager::GetSingleton();
-	auto uiStrHolder = RE::UIStringHolder::GetSingleton();
-	auto console = mm->GetMenu<RE::Console>(uiStrHolder->console);
 	auto selectedRefHandle = RE::Console::GetSelectedRef();
 	RE::TESObjectREFRPtr selectedRef;
 	RE::TESObjectREFR::LookupByHandle(selectedRefHandle, selectedRef);
