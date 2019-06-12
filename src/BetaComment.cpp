@@ -130,9 +130,8 @@ void BetaComment::LogComment(RE::TESObjectREFR* a_ref, const std::string& a_comm
 	line << _userName << ' ';
 
 	auto cell = a_ref->GetParentCell();
-	line << cell->GetEditorID() << ' ';
-	if (!cell->IsInteriorCell()) {
-		auto coordinates = cell->lightingCoordinates.coordinates;
+	auto coordinates = cell->GetCoordinates();
+	if (coordinates) {
 		line << '(' << coordinates->x << ',' << coordinates->y << ") ";
 	}
 
