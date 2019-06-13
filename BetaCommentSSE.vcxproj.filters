@@ -32,5 +32,8 @@
     <ClInclude Include="include\BetaComment.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\version.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

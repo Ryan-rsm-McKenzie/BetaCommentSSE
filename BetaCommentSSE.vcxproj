@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="include\BetaComment.h" />
     <ClInclude Include="include\Settings.h" />
+    <ClInclude Include="include\version.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
