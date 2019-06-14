@@ -111,7 +111,7 @@ void BetaComment::LogComment(RE::TESObjectREFR* a_ref, const std::string& a_comm
 
 	auto source = a_ref->GetFinalSourceFile();
 	if (!source) {
-		CPrint("> [BetaComment] ERROR: Failed to get last modified source file for selected ref", err);
+		CPrint("> [BetaComment] ERROR: Failed to get last modified source file for selected ref");
 		return;
 	} else {
 		line << source->name << DELIM;
