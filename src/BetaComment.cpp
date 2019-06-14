@@ -22,6 +22,12 @@ BetaComment* BetaComment::GetSingleton()
 
 bool BetaComment::Exec(const RE::SCRIPT_PARAMETER* a_paramInfo, RE::CommandInfo::ScriptData* a_scriptData, RE::TESObjectREFR* a_thisObj, RE::TESObjectREFR* a_containingObj, RE::Script* a_scriptObj, RE::ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr)
 {
+	auto singleton = GetSingleton();
+	if (!singleton->_file.is_open()) {
+		CPrint("> [BetaComment] ERROR: Failed to open output file");
+		return true;
+	}
+
 	auto selectedRefHandle = RE::Console::GetSelectedRef();
 	RE::TESObjectREFRPtr selectedRef;
 	RE::TESObjectREFR::LookupByHandle(selectedRefHandle, selectedRef);
@@ -30,9 +36,8 @@ bool BetaComment::Exec(const RE::SCRIPT_PARAMETER* a_paramInfo, RE::CommandInfo:
 		return true;
 	}
 
-	auto strChunk = static_cast<RE::CommandInfo::StringChunk*>(a_scriptData->GetChunk());
+	auto strChunk = a_scriptData->GetStringChunk();
 	auto comment = strChunk->GetString();
-	auto singleton = GetSingleton();
 	singleton->LogComment(selectedRef.get(), comment);
 
 	return true;
@@ -68,10 +73,6 @@ BetaComment::BetaComment() :
 	_userName{ 0 }
 {
 	_file.open(Settings::filePath.c_str());
-	if (!_file.is_open()) {
-		_FATALERROR("[FATAL ERROR] Failed to open output file");
-		std::abort();
-	}
 
 	DWORD userNameSize = sizeof(_userName);
 	if (!GetUserName(_userName, &userNameSize)) {
