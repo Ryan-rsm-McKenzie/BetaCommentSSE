@@ -1,7 +1,5 @@
 ﻿#include "skse64_common/skse_version.h"
 
-#include <ShlObj.h>
-
 #include "BetaComment.h"
 #include "Settings.h"
 #include "version.h"
@@ -28,9 +26,9 @@ namespace
 extern "C" {
 	bool SKSEPlugin_Query(const SKSE::QueryInterface* a_skse, SKSE::PluginInfo* a_info)
 	{
-		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\BetaCommentSSE.log");
-		gLog.SetPrintLevel(IDebugLog::kLevel_DebugMessage);
-		gLog.SetLogLevel(IDebugLog::kLevel_DebugMessage);
+		SKSE::Logger::OpenRelative(FOLDERID_Documents, L"\\My Games\\Skyrim Special Edition\\SKSE\\BetaCommentSSE.log");
+		SKSE::Logger::SetPrintLevel(SKSE::Logger::Level::kDebugMessage);
+		SKSE::Logger::SetFlushLevel(SKSE::Logger::Level::kDebugMessage);
 
 		_MESSAGE("BetaCommentSSE v%s", BTCM_VERSION_VERSTRING);
 
@@ -42,7 +40,7 @@ extern "C" {
 			_FATALERROR("[FATAL ERROR] Loaded in editor, marking as incompatible!\n");
 			return false;
 		}
-		
+
 		switch (a_skse->RuntimeVersion()) {
 		case RUNTIME_VERSION_1_5_73:
 		case RUNTIME_VERSION_1_5_80:
