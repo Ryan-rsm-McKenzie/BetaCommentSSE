@@ -62,9 +62,9 @@ void BetaComment::Register()
 		info->eval = 0;
 		info->flags = 0;
 
-		_MESSAGE("[MESSAGE] Registered console command: %s (%s)", info->longName, info->shortName);
+		_MESSAGE("Registered console command: %s (%s)", info->longName, info->shortName);
 	} else {
-		_ERROR("[ERROR] Failed to register console command!\n");
+		_ERROR("Failed to register console command!\n");
 	}
 }
 
@@ -76,7 +76,7 @@ BetaComment::BetaComment() :
 
 	DWORD userNameSize = sizeof(_userName);
 	if (!GetUserName(_userName, &userNameSize)) {
-		_ERROR("[ERROR] Failed to get username with error code (%i)", GetLastError());
+		_ERROR("Failed to get username with error code (%i)", GetLastError());
 		strcpy_s(_userName, sizeof(_userName), "SEE_LOG_FOR_ERROR");
 	}
 }
