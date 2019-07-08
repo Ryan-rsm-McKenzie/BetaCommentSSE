@@ -88,7 +88,7 @@ void BetaComment::CPrint(const char* a_fmt, ...)
 	if (console && console->IsConsoleMode()) {
 		std::va_list args;
 		va_start(args, a_fmt);
-		console->Print(a_fmt, args);
+		console->VPrint(a_fmt, args);
 		va_end(args);
 	}
 }
