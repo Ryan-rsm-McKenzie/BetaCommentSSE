@@ -5,8 +5,8 @@
 
 bool Settings::loadSettings(bool a_dumpParse)
 {
-	return Json2Settings::Settings::loadSettings(FILE_NAME, false, a_dumpParse);
+	return Json2Settings::Settings::loadSettings(FILE_NAME, a_dumpParse);
 }
 
 
-decltype(Settings::filePath) Settings::filePath("filePath", false, "betacomments.txt");
+decltype(Settings::filePath) Settings::filePath("filePath", "betacomments.txt");
